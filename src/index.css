@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quintessential&display=swap');
 @import 'tailwindcss';
 
 @theme {
   --font-Quintessential : "Quintessential", serif;
+  --font-great-vibes : "Great Vibes", cursive;
+  --color-offset-white: #F5EFE6;
+  --color-offset-white-hover : #EDE3D6;
 }
