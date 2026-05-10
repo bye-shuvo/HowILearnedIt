@@ -4,7 +4,7 @@ import Home from './Home/Home.tsx';
 const App = () => {
   return (
     <>
-     <Home /> 
+     <Home />
     </>
   )
 }

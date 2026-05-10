@@ -1,12 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [menuClose, setMenuClose] = useState(true);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
-    <nav className="flex">
-      <ul>
-        
-      </ul>
-    </nav>
+    <>
+    {/*for desktop*/}
+
+      {!isMobile && (
+        <nav className="sticky top-10 flex items-center px-10 bg-offset-white-hover/10 backdrop-blur-sm">
+          <div className="font-Quintessential font-extrabold text-3xl">
+            HowILearnedIt
+          </div>
+          <ul className="flex justify-end items-center gap-x-10  w-full h-15">
+            <Link to={"/"}>Articles</Link>
+            <Link to={"/"}>Topics</Link>
+            <Link to={"/"}>About</Link>
+          </ul>
+        </nav>
+      )}
+
+      {/*for mobile*/}
+
+      {isMobile && (
+        <nav className="sticky top-10 flex flex-col items-center px-10">
+          <div id="mobile-nav-heading" className="w-full flex justify-between">
+            <div className="font-Quintessential font-extrabold text-3xl">
+              HowILearnedIt
+            </div>
+            <button onClick={() => setMenuClose(!menuClose)} className="cursor-pointer">
+              <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path className="fill-black" fill="rgb(255, 255, 255)" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
+            </button>
+          </div>
+          {!menuClose && (
+            <ul onClick={() => setMenuClose(true)} className="absolute top-15 flex flex-col justify-end items-center gap-y-5 w-full bg-offset-white-hover/10 py-5 backdrop-blur-sm">
+              <Link to={"/"}>Articles</Link>
+              <Link to={"/"}>Topics</Link>
+              <Link to={"/"}>About</Link>
+            </ul>
+          )}
+        </nav>
+      )}
+    </>
   );
 };
 
