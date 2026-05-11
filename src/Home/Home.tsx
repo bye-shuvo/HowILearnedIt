@@ -2,13 +2,13 @@ import Navbar from "./Navbar.tsx";
 
 const Home = () => {
   return (
-    <div id="home" className="min-h-dvh bg-offset-white md:px-[20vw] selection:bg-transparent">
+    <div id="home" className="min-h-dvh bg-offset-white md:px-[20vw] selection:bg-transparent font-base text-text">
       <Navbar />
       <main className="md:h-[calc(100dvh-3.75rem)] h-dvh flex flex-col justify-center items-center leading-loose">
-        <h1 className="font-great-vibes text-4xl md:text-7xl xl:text-8xl text-center leading-snug text-wrap px-5">
+        <h1 className="font-great-vibes text-4xl md:text-7xl xl:text-8xl text-center leading-tight text-wrap px-5">
           Code is how I think. <br /> Words are how I make you feel it.
         </h1>
-        <h2 className="text-wrap text-sm text-center leading-tight px-5">Honest writing on software, systems, and the quiet discipline it takes to build things that last.</h2>
+        <h2 className="text-wrap text-center leading-relaxed px-5 font-content-subtitle text-md md:text-2xl">Honest writing on software, systems and the quiet discipline it takes to build things that last.</h2>
       </main>
       <footer></footer>
     </div>

@@ -18,10 +18,10 @@ const Navbar = () => {
       {!isMobile && (
         <nav className="sticky top-10 flex items-center px-10 bg-offset-white-hover/10 backdrop-blur-sm">
           <div className="font-Quintessential font-extrabold text-3xl">
-            HowILearnedIt
+            <Link to={"/"}>HowILearnedIt</Link>
           </div>
           <ul className="flex justify-end items-center gap-x-10  w-full h-15">
-            <Link to={"/"}>Articles</Link>
+            <Link to={"/articles"}>Articles</Link>
             <Link to={"/"}>Topics</Link>
             <Link to={"/"}>About</Link>
           </ul>
@@ -31,9 +31,9 @@ const Navbar = () => {
       {/*for mobile*/}
 
       {isMobile && (
-        <nav className="sticky top-10 flex flex-col items-center px-10">
+        <nav className="sticky top-5 flex flex-col items-center px-10">
           <div id="mobile-nav-heading" className="w-full flex justify-between">
-            <div className="font-Quintessential font-extrabold text-3xl">
+            <div className="font-Quintessential font-extrabold text-2xl">
               HowILearnedIt
             </div>
             <button onClick={() => setMenuClose(!menuClose)} className="cursor-pointer">
@@ -41,7 +41,7 @@ const Navbar = () => {
             </button>
           </div>
           {!menuClose && (
-            <ul onClick={() => setMenuClose(true)} className="absolute top-15 flex flex-col justify-end items-center gap-y-5 w-full bg-offset-white-hover/10 py-5 backdrop-blur-sm">
+            <ul onClick={() => setMenuClose(true)} className="absolute top-15 flex flex-col justify-end items-center gap-y-5 w-full bg-offset-white-hover/10 py-5 backdrop-blur-sm border-b-2 border-offset-white-hover">
               <Link to={"/"}>Articles</Link>
               <Link to={"/"}>Topics</Link>
               <Link to={"/"}>About</Link>
