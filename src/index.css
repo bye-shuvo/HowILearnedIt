@@ -1,9 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quintessential&display=swap');
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quintessential&display=swap");
+@import "tailwindcss";
 
 @theme {
-  --font-Quintessential : "Quintessential", serif;
-  --font-great-vibes : "Great Vibes", cursive;
-  --color-offset-white: #F5EFE6;
-  --color-offset-white-hover : #EDE3D6;
+  /*Custom Fonts*/
+  --font-Quintessential: "Quintessential", serif;
+  --font-great-vibes: "Great Vibes", cursive;
+  --font-content-title: "Playfair Display", serif;
+  --font-content-subtitle: "Cormorant Garamond", serif;
+  --font-base: "Lato", sans-serif;
+  --font-blog-content: "Merriweather", serif;
+
+  /*Custom Color*/
+  --color-offset-white: #f5efe6;
+  --color-offset-white-hover: #ede3d6;
+  --color-text : #2C1810;
 }
