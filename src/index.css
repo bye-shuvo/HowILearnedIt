@@ -13,5 +13,18 @@
   /*Custom Color*/
   --color-offset-white: #f5efe6;
   --color-offset-white-hover: #ede3d6;
-  --color-text : #2C1810;
+  --color-text: #2c1810;
+
+  /*Custom Radius*/
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /*Custom Shadow*/
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+
+  /*Custom Transition*/
+  --transition-base: 200ms ease;
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }

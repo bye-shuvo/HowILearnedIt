@@ -1,4 +1,6 @@
+import Info from "./Info.tsx";
 import Navbar from "./Navbar.tsx";
+import Topics from "./Topics.tsx";
 
 const Home = () => {
   return (
@@ -11,6 +13,7 @@ const Home = () => {
         <img className="absolute md:top-[27%] md:left-[78%] md:h-50 aspect-square hue-rotate-15" src="/paper-plane.png" alt="" />
         <img className="absolute md:top-[10%] md:left-[110%] rotate-180 md:h-50 aspect-square hue-rotate-15" src="/paper-plane.png" alt="" />
         <h2 className="text-wrap text-center leading-relaxed px-5 font-content-subtitle text-md md:text-2xl">Honest writing on software, systems and the quiet discipline it takes to build things that last.</h2>
+      <Info />
       </main>
       <footer></footer>
     </div>
