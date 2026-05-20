@@ -11,22 +11,55 @@ export type ArticleTag =
 export type ArticleSize = "featured" | "large" | "medium" | "small";
 
 export interface Article {
-  id: number;
+  id: string;
   slug: string;
-  tag: ArticleTag;
+
+  // Content
   title: string;
-  subtitle: string;
+  subtitle?: string;
   excerpt: string;
+  content: string;
+  coverImage?: string;
+  coverGradient?: string;
+
+  // Taxonomy
+  tag: ArticleTag;
+  topics: string[];
+
+  // Authorship
   author: Author;
-  date: string;
+  coAuthors?: Author[];
+
+  // Timestamps
+  publishedAt: string;       // ISO 8601
+  updatedAt?: string;
+
+  // Meta
   readTime: string;
-  size: ArticleSize;
-  coverGradient: string; // Tailwind gradient classes for placeholder cover
+  wordCount: number;
+  featured: boolean;
+  status: "draft" | "published" | "archived";
+
+  // Engagement
+  views?: number;
+  likes?: number;
+
+  // SEO
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    ogImage?: string;
+    canonicalUrl?: string;
+  };
 }
 
 export interface Author {
+  id: string;
   name: string;
   initials: string;
+  avatarUrl?: string;
+  bio?: string;
+  href?: string;
 }
 
 export interface FilterState {
