@@ -27,4 +27,17 @@
   /*Custom Transition*/
   --transition-base: 200ms ease;
   --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /*Custom breakpoints*/
+  --breakpoint-* : initial ;
+  --breakpoint-mobile-sm : 320px ;
+  --breakpoint-mobile-md : 360px ;
+  --breakpoint-mobile-lg : 440px ;
+  --breakpoint-tablet-md : 768px ;
+  --breakpoint-tablet-lg : 800px ;
+  --breakpoint-laptop-md : 1280px ;
+  --breakpoint-laptop-lg : 1536px ;
+  --breakpoint-desktop-sm : 1920px;
+  --breakpoint-desktop-md : 2560px ;
+  --breakpoint-desktop-lg : 3440px ;
 }
