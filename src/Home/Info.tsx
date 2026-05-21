@@ -16,7 +16,7 @@ const Info = () => {
   return (
     <section
       id="info"
-      className="relative top-[15%] flex items-center justify-center gap-15 max-w-full overflow-x-scroll overflow-hidden scrollbar-none pointer-events-none"
+      className="relative top-[20%] laptop-lg:top-[15%] flex items-center justify-center gap-2 tablet-lg:gap-5 laptop-lg:gap-15 max-w-full pointer-events-none"
     >
       {info.map((info, index) => {
         return (
@@ -24,10 +24,10 @@ const Info = () => {
             key={index}
             className="text-center font-content-subtitle"
           >
-            <p className="text-5xl text-text font-extrabold hover:text-shadow-text">
+            <p className="text-3xl tablet-md:text-4xl laptop-lg:text-5xl text-text font-extrabold hover:text-shadow-text leading-snug">
               {info.data}
             </p>
-            <p className="text-xl mt-2">{info.topic}</p>
+            <p className="laptop-lg:text-xl laptop-lg:mt-2 leading-tight">{info.topic}</p>
           </span>
         );
       })}

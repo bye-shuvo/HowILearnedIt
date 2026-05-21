@@ -24,10 +24,10 @@ const Topics = () => {
   "Leadership",
 ];
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <div className="flex flex-wrap items-center gap-2 laptop-lg:gap-3">
       {
         topics.map((topic , index) => {
-          return <span key={index} className="shrink-0 px-8 py-2 border border-offset-white-hover text-base hover:bg-offset-white-hover cursor-pointer">{topic}</span>
+          return <span key={index} className="shrink-0 px-8 py-2 border border-offset-white-hover laptop-lg:text-base text-sm hover:bg-offset-white-hover cursor-pointer">{topic}</span>
         })
       }
     </div>

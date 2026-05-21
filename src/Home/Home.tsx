@@ -6,7 +6,7 @@ import Quote from "./Quote.tsx";
 
 const Home = () => {
   return (
-    <div id="home" className="min-h-dvh bg-offset-white laptop-lg:px-[20vw] selection:bg-offset-white-hover font-base text-text">
+    <div id="home" className="min-h-dvh bg-offset-white tablet-lg:px-[20vw] selection:bg-offset-white-hover font-base text-text">
       <Navbar />
       <LandingPage />
       <ArticleGrid />
