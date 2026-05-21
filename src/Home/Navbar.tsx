@@ -16,7 +16,7 @@ const Navbar = () => {
     {/*for desktop*/}
 
       {!isMobile && (
-        <nav className="sticky top-10 flex items-center px-10 bg-offset-white-hover/10 backdrop-blur-sm">
+        <nav className="sticky top-10 flex items-center px-10 bg-offset-white-hover/10 backdrop-blur-sm z-50">
           <div className="font-Quintessential font-extrabold text-3xl">
             <Link to={"/"}>HowILearnedIt</Link>
           </div>

@@ -160,23 +160,23 @@ const ArticleGrid = () => {
   return (
     <section id="article-grid" className="max-w-full w-full">
         <h1 className="mb-10 text-xl flex items-center gap-3 w-full">Articles <p className="w-full h-px bg-text/20"></p></h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l">
+      <div className="grid grid-cols-1 laptop-lg:grid-cols-2 border-t border-l">
         {ARTICLES.map((article, index) => {
           return (
             <div
               key={index}
-              className="flex flex-col gap-4 p-2 md:p-5 border-b border-r border-text box-content group"
+              className="flex flex-col gap-4 p-2 laptop-lg:p-5 border-b border-r border-text box-content group"
             >
               <p>{article.tag}</p>
               <p className="text-sm">{article.slug}</p>
               <h2 className="font-content-title text-3xl">{article.title}</h2>
               <h3 className="font-content-subtitle text-lg">{article.subtitle}</h3>
               <p className="text-sm">{article.excerpt}</p>
-              <div className="flex gap-1 md:gap-2 text-sm">
+              <div className="flex gap-1 laptop-lg:gap-2 text-sm">
                 <p>{article.publishedAt}</p>
                 <p>{article.readTime}</p>
               </div>
-              <div className="flex gap-1 md:gap-3">
+              <div className="flex gap-1 laptop-lg:gap-3">
                 <p className="flex items-center gap-1 text-sm">
                   <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                     <path
@@ -196,7 +196,7 @@ const ArticleGrid = () => {
                   {article.likes}
                 </p>
               </div>
-              <div className="flex items-center justify-between gap-1 md:gap-2">
+              <div className="flex items-center justify-between gap-1 laptop-lg:gap-2">
                 <p className="flex gap-2 items-center text-sm">
                   <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                     <path
