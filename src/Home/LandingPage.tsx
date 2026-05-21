@@ -7,11 +7,11 @@ const LandingPage = () => {
       id="landing-page"
       className="laptop-lg:h-[calc(100dvh-3.75rem)] h-dvh flex flex-col justify-center items-center leading-loose relative"
     >
-      <h1 className="font-great-vibes text-4xl laptop-lg:text-7xl desktop-sm:text-8xl text-center leading-tight text-wrap px-5">
+      <h1 className="font-great-vibes text-4xl tablet-md:text-5xl laptop-lg:text-7xl desktop-sm:text-8xl text-center leading-tight text-wrap px-5">
         Code is how I think. <br /> Words are how I make you feel it.
       </h1>
       <img
-        className="absolute laptop-lg:top-[18%] laptop-lg:left-[78%] laptop-lg:h-36 aspect-square hue-rotate-15 pointer-events-none"
+        className="absolute top-[55%] laptop-lg:top-[18%] laptop-lg:left-[78%] h-28 laptop-lg:h-36 aspect-square hue-rotate-15 pointer-events-none"
         src="/paper-plane.png"
         alt=""
       />

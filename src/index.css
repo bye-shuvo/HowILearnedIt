@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quintessential&family=Tangerine:wght@400;700&display=swap');
 @import "tailwindcss";
 
+*{
+  transition: all;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
 @theme {
   /*Custom Fonts*/
   --font-Quintessential: "Quintessential", serif;
@@ -35,7 +41,7 @@
   --breakpoint-mobile-md : 360px ;
   --breakpoint-mobile-lg : 440px ;
   --breakpoint-tablet-md : 768px ;
-  --breakpoint-tablet-lg : 800px ;
+  --breakpoint-tablet-lg : 850px ;
   --breakpoint-laptop-md : 1280px ;
   --breakpoint-laptop-lg : 1536px ;
   --breakpoint-desktop-sm : 1920px;
