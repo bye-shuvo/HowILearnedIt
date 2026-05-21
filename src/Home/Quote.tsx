@@ -2,9 +2,9 @@ import React from 'react'
 
 const Quote = () => {
   return (
-    <section className="w-full h-[80vh] flex flex-col justify-center items-center gap-10">
-      <p className="font-great-vibes text-6xl text-text/90 text-center">"Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.”</p>
-      <p className="text-md text-text/40"> - Rick Osborne</p>
+    <section className="w-full py-[20vh] flex flex-col justify-center items-center gap-5">
+      <p className="font-tangerine text-6xl text-text/90 text-center">"I Build to learn & learn to build”</p>
+      <p className="text-laptop-lg: text-text/40"> - Bye Shuvo</p>
     </section>
   )
 }

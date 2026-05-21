@@ -158,25 +158,26 @@ const ArticleGrid = () => {
     },
   ];
   return (
-    <section id="article-grid" className="max-w-full w-full">
+    <section id="article-grid" className="max-w-full w-full h-fit">
         <h1 className="mb-10 text-xl flex items-center gap-3 w-full">Articles <p className="w-full h-px bg-text/20"></p></h1>
       <div className="grid grid-cols-1 laptop-lg:grid-cols-2 border-t border-l">
         {ARTICLES.map((article, index) => {
           return (
             <div
               key={index}
-              className="flex flex-col gap-4 p-2 laptop-lg:p-5 border-b border-r border-text box-content group"
+              className="flex flex-col gap-3 p-2 laptop-lg:p-7 border-b border-r border-text box-content group text-sm"
             >
               <p>{article.tag}</p>
-              <p className="text-sm">{article.slug}</p>
+              <p>{article.slug}</p>
               <h2 className="font-content-title text-3xl">{article.title}</h2>
               <h3 className="font-content-subtitle text-lg">{article.subtitle}</h3>
-              <p className="text-sm">{article.excerpt}</p>
-              <div className="flex gap-1 laptop-lg:gap-2 text-sm">
-                <p>{article.publishedAt}</p>
+              <p >{article.excerpt}</p>
+              <div className="flex items-center gap-1 laptop-lg:gap-2 text-sm">
+                <p className="flex gap-1 items-center text-sm"><svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path className="fill-text" d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-32c0-17.7 14.3-32 32-32zM64 240l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm128 0l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM64 368l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zm112 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16z"/></svg>{new Date(article.publishedAt).toDateString()}</p>
+                <span className="h-2 w-2 rounded-full bg-text"></span>
                 <p>{article.readTime}</p>
               </div>
-              <div className="flex gap-1 laptop-lg:gap-3">
+              <div className="flex gap-1 laptop-lg:gap-5">
                 <p className="flex items-center gap-1 text-sm">
                   <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                     <path
