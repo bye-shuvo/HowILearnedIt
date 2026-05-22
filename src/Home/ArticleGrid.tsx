@@ -1,6 +1,6 @@
 import React from "react";
-import Topics from "./Topics";
 import { type Article } from "../Articles/types.ts";
+import H1 from "../utils/H1.tsx";
 
 const ArticleGrid = () => {
   const ARTICLES: Article[] = [
@@ -156,12 +156,10 @@ const ArticleGrid = () => {
       views: 3780,
       likes: 267,
     },
-  ];
+  ].filter((article) => article.featured === false);
   return (
-    <section id="article-grid" className="max-w-full w-full h-fit px-5">
-      <h1 className="mb-10 text-xl flex items-center gap-3 w-full">
-        Articles <p className="w-full h-px bg-text/20"></p>
-      </h1>
+    <section id="article-grid" className="max-w-full w-full h-fit px-5 laptop-lg:px-0">
+        <H1 heading="Articles" />
       <div className="grid grid-cols-1 tablet-lg:grid-cols-2 border-t border-l">
         {ARTICLES.map((article, index) => {
           return (
