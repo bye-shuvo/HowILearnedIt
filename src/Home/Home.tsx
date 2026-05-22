@@ -5,6 +5,7 @@ import Explore from "./Explore.tsx";
 import Quote from "./Quote.tsx";
 import Footer from "./Footer.tsx";
 import Featured from "./Featured.tsx";
+import Newsletter from "./Newsletter.tsx";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <ArticleGrid />
       <Quote />
       <Explore />
+      <Newsletter />
       <Footer />
     </div>
   );
