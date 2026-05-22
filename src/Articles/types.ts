@@ -1,12 +1,26 @@
-export type ArticleTag =
-  | "Architecture"
-  | "TypeScript"
-  | "Systems"
-  | "Philosophy"
-  | "Craft"
-  | "DevOps"
-  | "Open Source"
-  | "Career";
+export const ARTICLE_TAGS = [
+  "Architecture",
+  "TypeScript",
+  "Systems",
+  "Philosophy",
+  "Craft",
+  "DevOps",
+  "Open Source",
+  "Career",
+  "Performance",
+  "Security",
+  "Testing",
+  "API Design",
+  "Database",
+  "Frontend",
+  "Backend",
+  "AI & ML",
+  "Tooling",
+  "Algorithms",
+  "Leadership",
+];
+
+export type ArticleTag = (typeof ARTICLE_TAGS)[number];
 
 export type ArticleSize = "featured" | "large" | "medium" | "small";
 
@@ -38,7 +52,7 @@ export interface Article {
   readTime: string;
   wordCount: number;
   featured: boolean;
-  status: "draft" | "published" | "archived";
+  status: "draft" | "published" | "archived" | string;
 
   // Engagement
   views?: number;
