@@ -7,7 +7,26 @@
   transition-timing-function: ease-in-out;
 }
 
+#home , #archive {
+  min-height: 100dvh ;
+  background: var(--color-offset-white);
+  color: var(--color-text);
+    & *::selection {
+        background-color: var(--color-offset-white-hover) /* #ede3d6 */;
+    }
+    &::selection {
+        background-color: var(--color-offset-white-hover) /* #ede3d6 */;
+    }
+    @media (width >= 850px) {
+        padding-inline: 20vw;
+    };
+    font-family: var(--font-base);
+}
+
 @theme {
+  /*Custom Text*/
+  --text-md : 16px ;
+
   /*Custom Fonts*/
   --font-Quintessential: "Quintessential", serif;
   --font-great-vibes: "Great Vibes", cursive;

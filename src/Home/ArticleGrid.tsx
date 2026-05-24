@@ -1,5 +1,5 @@
 import React from "react";
-import { type Article } from "../Articles/types.ts";
+import { type Article } from "../Archive/types.ts";
 import H1 from "../utils/H1.tsx";
 
 const ArticleGrid = () => {
@@ -165,7 +165,7 @@ const ArticleGrid = () => {
           return (
             <div
               key={index}
-              className="flex flex-col gap-3 p-5 laptop-lg:p-7 border-b border-r border-text box-content group text-sm"
+              className="flex flex-col gap-3 p-5 laptop-lg:p-7 border-b border-r border-text box-content group text-sm hover:bg-offset-white-hover"
             >
               <p className="text-lg">{article.tag}</p>
               <p>{article.slug}</p>

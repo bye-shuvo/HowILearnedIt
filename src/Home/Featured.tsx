@@ -1,5 +1,5 @@
 import React from "react";
-import { type Article } from "../Articles/types.ts";
+import { type Article } from "../Archive/types.ts";
 import H1 from "../utils/H1.tsx";
 
 const Featured = () => {
@@ -163,7 +163,7 @@ const Featured = () => {
      <H1 heading = "Featured" />
       {FEATURED_ARTICLES.map((article, index) => {
         return (
-          <div key={index} className="w-full p-3 laptop-lg:p-5 flex flex-col gap-3 laptop-lg:gap-5 border border-text">
+          <div key={index} className="w-full p-3 laptop-lg:p-5 flex flex-col gap-3 laptop-lg:gap-5 border border-text hover:bg-offset-white-hover">
             <p className="laptop-lg:text-lg">{article.tag}</p>
             <p className="font-content-title text-4xl laptop-lg:text-5xl">
               {article.title}

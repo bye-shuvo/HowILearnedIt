@@ -20,7 +20,7 @@ const Navbar = () => {
           <div className="font-Quintessential font-extrabold text-3xl">
             <Link to={"/"}>HowILearnedIt</Link>
           </div>
-          <ul className="flex justify-end items-center gap-x-10  w-full h-15">
+          <ul className="flex justify-end items-center gap-x-10 w-full h-15">
             <Link to={"/articles"}>Articles</Link>
             <Link to={"/"}>Topics</Link>
             <Link to={"/"}>About</Link>
