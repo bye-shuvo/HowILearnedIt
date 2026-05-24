@@ -4,10 +4,14 @@ import { ARTICLE_TAGS } from "./types.ts";
 const Search = () => {
   const horizintalElement = useRef<HTMLDivElement>(null);
 
-  const handleHorizontalScroll = (e: React.WheelEvent) => {
+  const handleHorizontalScroll = (e: WheelEvent) => {
     e.preventDefault();
     horizintalElement.current!.scrollLeft += e.deltaY; //allows horizontal scroll
   };
+
+  horizintalElement.current?.addEventListener("wheel", handleHorizontalScroll, {
+    passive: false,
+  });
 
   return (
     <section className="flex flex-col gap-3 laptop-lg:pt-10 pt-5 border-t border-text">
@@ -27,19 +31,18 @@ const Search = () => {
           <option value="">Popular</option>
         </select>
       </div>
-        <div
-          ref={horizintalElement}
-          className="overflow-x-scroll w-full scrollbar-none flex gap-2 items-center"
-          onWheel={handleHorizontalScroll}
-        >
-          {ARTICLE_TAGS.map((category) => {
-            return (
-              <button className="px-4 py-3 border border-text hover:bg-offset-white-hover text-nowrap hover:cursor-pointer">
-                {category}
-              </button>
-            );
-          })}
-        </div>
+      <div
+        ref={horizintalElement}
+        className="overflow-x-auto w-full scrollbar-none flex gap-2 items-center"
+      >
+        {ARTICLE_TAGS.map((category) => {
+          return (
+            <button className="px-4 py-3 border border-text hover:bg-offset-white-hover text-nowrap hover:cursor-pointer">
+              {category}
+            </button>
+          );
+        })}
+      </div>
     </section>
   );
 };
