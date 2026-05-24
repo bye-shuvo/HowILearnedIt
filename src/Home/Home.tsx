@@ -9,7 +9,7 @@ import Newsletter from "./Newsletter.tsx";
 
 const Home = () => {
   return (
-    <div id="home" className="min-h-dvh bg-offset-white tablet-lg:px-[20vw] selection:bg-offset-white-hover font-base text-text">
+    <div id="home">
       <Navbar />
       <LandingPage />
       <Featured />

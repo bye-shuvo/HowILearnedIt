@@ -1,5 +1,4 @@
 import React from "react";
-import H1 from "../utils/H1";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
