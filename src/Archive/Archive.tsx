@@ -5,7 +5,7 @@ import Search from './Search';
 
 const Archive = () => {
   return (
-    <div id="archive" className="">
+    <div id="archive">
       <Navbar />
       <Header />
       <Search />
