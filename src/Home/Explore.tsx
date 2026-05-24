@@ -1,10 +1,11 @@
 import React from 'react'
 import Topics from './Topics';
+import H1 from '../utils/H1';
 
 const Explore = () => {
   return (
-    <section id="explore" className="min-w-full w-full h-fit py-10 px-5">
-    <h1 className="mb-10 text-xl flex items-center gap-3 w-full">Explore <p className="w-full h-px bg-text/20"></p></h1>
+    <section id="explore" className="min-w-full w-full h-fit pb-5 laptop-lg:pb-10">
+    <H1 heading="Explore" />
       <Topics />
     </section>
   )

@@ -158,7 +158,7 @@ const ArticleGrid = () => {
     },
   ].filter((article) => article.featured === false);
   return (
-    <section id="article-grid" className="max-w-full w-full h-fit px-5 laptop-lg:px-0">
+    <section id="article-grid" className="max-w-full w-full h-fit">
         <H1 heading="Articles" />
       <div className="grid grid-cols-1 tablet-lg:grid-cols-2 border-t border-l">
         {ARTICLES.map((article, index) => {
@@ -167,7 +167,7 @@ const ArticleGrid = () => {
               key={index}
               className="flex flex-col gap-3 p-5 laptop-lg:p-7 border-b border-r border-text box-content group text-sm hover:bg-offset-white-hover"
             >
-              <p className="text-lg">{article.tag}</p>
+              <p className="text-base laptop-lg:text-lg">{article.tag}</p>
               <p>{article.slug}</p>
               <h2 className="font-content-title text-2xl laptop-lg:text-3xl">
                 {article.title}
