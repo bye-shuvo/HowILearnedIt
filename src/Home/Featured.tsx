@@ -159,7 +159,7 @@ const Featured = () => {
   ];
     const FEATURED_ARTICLES = ARTICLES.filter((article) => article.featured === true);
   return (
-    <section className="max-w-full flex flex-col justify-center items-center px-5 laptop-lg:px-0 mb-10">
+    <section className="max-w-full flex flex-col justify-center items-center mb-5 laptop-lg:mb-10">
      <H1 heading = "Featured" />
       {FEATURED_ARTICLES.map((article, index) => {
         return (

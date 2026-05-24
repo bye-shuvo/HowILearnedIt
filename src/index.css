@@ -1,31 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quintessential&family=Tangerine:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quintessential&family=Tangerine:wght@400;700&display=swap");
 @import "tailwindcss";
 
-*{
+* {
   transition: all;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
 }
 
-#home , #archive {
-  min-height: 100dvh ;
+#home,
+#archive {
+  min-height: 100dvh;
   background: var(--color-offset-white);
   color: var(--color-text);
-    & *::selection {
-        background-color: var(--color-offset-white-hover) /* #ede3d6 */;
-    }
-    &::selection {
-        background-color: var(--color-offset-white-hover) /* #ede3d6 */;
-    }
-    @media (width >= 850px) {
-        padding-inline: 20vw;
-    };
-    font-family: var(--font-base);
+  & *::selection {
+    background-color: var(--color-offset-white-hover) /* #ede3d6 */;
+  }
+  &::selection {
+    background-color: var(--color-offset-white-hover) /* #ede3d6 */;
+  }
+  @media (width >= 850px) {
+    padding-inline: 20vw;
+  }
+  @media (width <= 850px) {
+    padding-inline: 1rem;
+  }
+  font-family: var(--font-base);
 }
 
 @theme {
   /*Custom Text*/
-  --text-md : 16px ;
+  --text-md: 16px;
 
   /*Custom Fonts*/
   --font-Quintessential: "Quintessential", serif;
@@ -55,15 +59,15 @@
   --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /*Custom breakpoints*/
-  --breakpoint-* : initial ;
-  --breakpoint-mobile-sm : 320px ;
-  --breakpoint-mobile-md : 360px ;
-  --breakpoint-mobile-lg : 440px ;
-  --breakpoint-tablet-md : 768px ;
-  --breakpoint-tablet-lg : 850px ;
-  --breakpoint-laptop-md : 1280px ;
-  --breakpoint-laptop-lg : 1536px ;
-  --breakpoint-desktop-sm : 1920px;
-  --breakpoint-desktop-md : 2560px ;
-  --breakpoint-desktop-lg : 3440px ;
+  --breakpoint-*: initial;
+  --breakpoint-mobile-sm: 320px;
+  --breakpoint-mobile-md: 360px;
+  --breakpoint-mobile-lg: 440px;
+  --breakpoint-tablet-md: 768px;
+  --breakpoint-tablet-lg: 850px;
+  --breakpoint-laptop-md: 1280px;
+  --breakpoint-laptop-lg: 1440px;
+  --breakpoint-desktop-sm: 1920px;
+  --breakpoint-desktop-md: 2560px;
+  --breakpoint-desktop-lg: 3440px;
 }
