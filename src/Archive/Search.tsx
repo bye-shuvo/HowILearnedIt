@@ -1,17 +1,20 @@
-import React, { useRef } from "react";
+import React, { useCallback, useLayoutEffect, useRef } from "react";
 import { ARTICLE_TAGS } from "./types.ts";
 
 const Search = () => {
   const horizintalElement = useRef<HTMLDivElement>(null);
 
-  const handleHorizontalScroll = (e: WheelEvent) => {
+  const handleHorizontalScroll = useCallback((e: WheelEvent) => {
     e.preventDefault();
     horizintalElement.current!.scrollLeft += e.deltaY; //allows horizontal scroll
-  };
+  } , []);
 
-  horizintalElement.current?.addEventListener("wheel", handleHorizontalScroll, {
-    passive: false,
-  });
+  useLayoutEffect(() =>{
+    horizintalElement.current?.addEventListener("wheel", handleHorizontalScroll, {
+      passive: false,
+    });
+    return () => horizintalElement.current?.removeEventListener("wheel", handleHorizontalScroll);
+  } , []);
 
   return (
     <section className="flex flex-col gap-3 laptop-lg:pt-10 pt-5 border-t border-text">
