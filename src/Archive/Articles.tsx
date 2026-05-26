@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import type { Article } from "./types";
 import H1 from "../utils/H1";
+import { useNavigate } from "react-router-dom";
 
 const Articles = () => {
+  const Navigate = useNavigate();
   const [lastArticleIndex , setLastArticleIndex] = useState(1);
   const ARTICLES: Article[] = [
     {
@@ -164,7 +166,7 @@ const Articles = () => {
     e.preventDefault();
     const loadedArticles: Article[] = ARTICLES.filter((_, index) => index <= lastArticleIndex*2);
     FILTERED_ARTICLES.current = loadedArticles;
-    setLastArticleIndex(prev => prev*2);
+    setLastArticleIndex(prev => prev + prev);
   };
 
   return (
@@ -179,6 +181,7 @@ const Articles = () => {
             <div
               key={index}
               className="flex flex-col gap-3 p-5 laptop-lg:p-7 border-b border-r border-text box-content group text-sm hover:bg-offset-white-hover hover:cursor-pointer"
+              onClick={() => Navigate(`/articles/${article.slug}` , {state : article})}
             >
               <p className="text-base laptop-lg:text-lg">{article.tag}</p>
               <p>{article.slug}</p>
