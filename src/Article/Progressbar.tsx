@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Progressbar = () => {
+  const [scrollParcentage, setScrollParcentage] = useState(0);
+  const getScrollParcentage = () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    const maxScroll = scrollHeight - clientHeight;
+    const percentage = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+    setScrollParcentage(Math.min(100, Math.max(0, Math.round(percentage))));
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', getScrollParcentage, { passive: true });
+    getScrollParcentage();
+    return () => window.removeEventListener('scroll', getScrollParcentage);
+  }, []);
+
   return (
     <section
       id="progressbar"
-      className="w-full flex items-center gap-2 sticky left-0 laptop-lg:py-5"
+      className="w-full flex items-center gap-2 sticky left-0 top-0 laptop-lg:py-5 laptop-lg:px-3  backdrop-blur-sm bg-offset-white/20"
     >
       <p className="shrink-0">
-        {Math.round((window.scrollX * 1) / 100) * 100} % read
+        {scrollParcentage} % read
       </p>
-      <div id="progress-bar" className="w-full h-0.5 bg-text/50"></div>
+      <div id="progress-bar" className="w-full h-0.5 bg-text/50 relative">
+      <p id="scroll-progress" className="absolute left-0 top-0 h-full bg-green-400" style={{width : `${scrollParcentage}%`}}>
+        </p></div>
     </section>
   );
 };
