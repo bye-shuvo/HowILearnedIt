@@ -177,6 +177,7 @@
 }
 
 #markdown-content pre code {
+  font-family: "Fira Code", monospace;
   background: transparent;
   padding: 0;
   color: inherit;
