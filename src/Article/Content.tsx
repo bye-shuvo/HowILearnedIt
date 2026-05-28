@@ -45,7 +45,7 @@ const Content = (_props: { article: Article }) => {
   }, []);
 
   return (
-    <section className="w-full laptop-lg:py-10">
+    <section className="w-full laptop-lg:py-10 py-5">
       <div
         id="markdown-content"
         className="w-full selection:bg-offset-white-hover"
