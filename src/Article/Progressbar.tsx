@@ -20,7 +20,7 @@ const Progressbar = () => {
   return (
     <section
       id="progressbar"
-      className="w-full flex items-center gap-3 sticky left-0 top-0 laptop-lg:py-5 laptop-lg:px-3 backdrop-blur-sm bg-offset-white/20"
+      className="w-full flex items-center gap-3 sticky left-0 top-0 laptop-lg:py-5 py-3 laptop-lg:px-3 backdrop-blur-sm bg-offset-white/20"
     >
       <p className="shrink-0">{scrollParcentage} % read</p>
       <div id="progress-bar" className="w-full h-0.5 bg-text/50 relative">
@@ -30,7 +30,7 @@ const Progressbar = () => {
           style={{ width: `${scrollParcentage}%` }}
         ></p>
       </div>
-      <Link to={"/articles"} className="laptop-lg:px-6 px-4 py-2 ring-1 ring-text hover:cursor-pointer hover:bg-offset-white-hover">Close</Link>
+      <Link to={"/articles"} className="laptop-lg:px-6 px-4 laptop-lg:py-2 py-1 ring-1 ring-text hover:cursor-pointer hover:bg-offset-white-hover">Close</Link>
     </section>
   );
 };

@@ -21,15 +21,15 @@ const Header = ({ article }: { article: Article }) => {
   return (
     <section
       id="article-header"
-      className="flex flex-col laptop-lg:gap-3 laptop-lg:pb-5"
+      className="flex flex-col gap-3 laptop-lg:pb-5 pb-3"
     >
-      <p className="laptop-lg:text-xl">{article.tag}</p>
-      <h1 className="font-Quintessential laptop-lg:text-7xl leading-tight">
+      <p className="laptop-lg:text-xl text-lg">{article.tag}</p>
+      <h1 className="font-Quintessential text-5xl laptop-lg:text-7xl leading-tight">
         {article.title}
       </h1>
-      <div className="flex gap-3 items-center laptop-lg:py-5">
+      <div className="flex gap-2 laptop-lg:gap-3 items-center laptop-lg:py-5 laptop-lg:text-base text-sm">
         <img
-          className="h-9 w-9 rounded-full object-center"
+          className="h-7 w-7 laptop-lg:h-9 laptop-lg:w-9 rounded-full object-center"
           src={
             article.author.avatarUrl ||
             "https://robohash.org/4ee8109cc6350a819fbaa273d4cac0de?set=set4&bgset=&size=200x200"
@@ -47,7 +47,7 @@ const Header = ({ article }: { article: Article }) => {
             onClick={handleShare}
           >
             <svg
-              className="h-5 w-5"
+              className="h-4 w-4 laptop-lg:h-5 laptop-lg:w-5"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
             >
@@ -65,7 +65,7 @@ const Header = ({ article }: { article: Article }) => {
             onClick={handleCopy}
           >
             <svg
-              className="h-5 w-5"
+              className="h-4 w-4 laptop-lg:h-5 laptop-lg:w-5"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
             >

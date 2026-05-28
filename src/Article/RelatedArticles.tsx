@@ -161,17 +161,17 @@ const RelatedArticles = ({ article }: { article: Article }) => {
     },
   ];
 
-  const RELETED_ARTICLES = ARTICLES.filter((post) => post.tag === article.tag);
+  const RELETED_ARTICLES = ARTICLES.filter((post) => post.tag === article.tag && post.title !== article.title);
   return (
     (RELETED_ARTICLES.length !== 0) &&
-    <section id="related-articles" className="w-full flex flex-col laptop-lg:py-5">
+    <section id="related-articles" className="w-full flex flex-col laptop-lg:py-5 py-4">
     <H1 heading="Related Articles" />
     <div className="grid laptop-lg:grid-cols-2 border-l border-t border-text">
       {RELETED_ARTICLES.map((article, index) => {
         return (
           <div
             key={index}
-            className="flex flex-col gap-3 p-5 laptop-lg:p-7 border-b border-r border-text box-content group text-sm hover:bg-offset-white-hover hover:cursor-pointer"
+            className="flex flex-col laptop-lg:gap-3 gap-2 p-5 laptop-lg:p-7 border-b border-r border-text box-content group text-sm hover:bg-offset-white-hover hover:cursor-pointer"
             onClick={() =>
               Navigate(`/articles/${article.slug}`, { state: article })
             }
