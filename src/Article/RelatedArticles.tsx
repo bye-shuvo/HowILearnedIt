@@ -163,6 +163,7 @@ const RelatedArticles = ({ article }: { article: Article }) => {
 
   const RELETED_ARTICLES = ARTICLES.filter((post) => post.tag === article.tag);
   return (
+    (RELETED_ARTICLES.length !== 0) &&
     <section id="related-articles" className="w-full flex flex-col laptop-lg:py-5">
     <H1 heading="Related Articles" />
     <div className="grid laptop-lg:grid-cols-2 border-l border-t border-text">

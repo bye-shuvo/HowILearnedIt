@@ -21,6 +21,7 @@ const Navbar = () => {
             <Link to={"/"}>HowILearnedIt</Link>
           </div>
           <ul className="flex justify-end items-center gap-x-10 w-full h-15">
+            <Link to={"/"}>Home</Link>
             <Link to={"/articles"}>Articles</Link>
             <Link to={"/"}>Topics</Link>
             <Link to={"/"}>About</Link>

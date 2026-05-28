@@ -32,9 +32,11 @@ const Content = (_props: { article: Article }) => {
   - easier to maintain
   - easier to scale
   - easier to debug
-
-  console.log("This is a code")
   
+  \`\`\`ts
+  console.log("This is a code")
+  \`\`\`
+
   ## Conclusion`;
 
     processor.process(value).then((file) => {
@@ -46,7 +48,7 @@ const Content = (_props: { article: Article }) => {
     <section className="w-full laptop-lg:py-10">
       <div
         id="markdown-content"
-        className="selection:bg-offset-white-hover"
+        className="w-full selection:bg-offset-white-hover"
         dangerouslySetInnerHTML={{ __html: html }}
       ></div>
     </section>
