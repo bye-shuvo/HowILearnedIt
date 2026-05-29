@@ -12,7 +12,9 @@
 #admin,
 #dashboard,
 #create,
-#article {
+#article,
+#dashboard,
+#admin-login{
   min-height: 100dvh;
   background: var(--color-offset-white);
   color: var(--color-text);
