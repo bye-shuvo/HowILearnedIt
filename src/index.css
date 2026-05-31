@@ -10,10 +10,8 @@
 #home,
 #archive,
 #admin,
-#dashboard,
 #create,
 #article,
-#dashboard,
 #admin-login{
   min-height: 100dvh;
   background: var(--color-offset-white);
