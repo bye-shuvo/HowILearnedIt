@@ -13,17 +13,17 @@ const Stats = () => {
     },
   ];
   return (
-        <section id="stats" className="flex gap-5 tablet-lg:pb-10">
+        <section id="stats" className="flex tablet-lg:gap-5 gap-3 tablet-lg:pb-10 pb-5 items-center justify-center">
           {STATS.map((stat, index) => {
             return (
               <div
                 key={index}
-                className="p-5 tablet-lg:px-40 flex flex-col gap-3 items-center bg-offset-white-hover"
+                className="p-5 tablet-lg:px-40 px-12 flex flex-col gap-3 items-center bg-offset-white-hover"
               >
-                <p className="tablet-lg:text-5xl font-blog-content">
+                <p className="text-3xl tablet-lg:text-5xl font-blog-content">
                   {stat.data}
                 </p>
-                <p className="tablet-lg:text-md font-blog-content">
+                <p className="text-sm tablet-lg:text-md font-blog-content">
                   {stat.topic}
                 </p>
               </div>

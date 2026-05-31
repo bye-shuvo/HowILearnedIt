@@ -158,34 +158,35 @@ const Articles = () => {
   ];
 
   const RECENT_ARTICLES = ARTICLES.filter(
-    (article) => article.publishedAt < Date.now().toLocaleString()
-  )
+    (article) => article.publishedAt < new Date(Date.now()).toISOString()
+  ).slice(0,5);
+
   return (
     <section className="w-full">
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
-        <table className="min-w-full divide-y divide-slate-200">
-          <thead className="bg-slate-50">
-            <tr>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Article Id</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Article Title</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Article Likes</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Update</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">Delete</th>
+      <div className="overflow-x-auto border border-text bg-offset-white-hover shadow-sm">
+        <table className="max-w-full divide-y divide-text/50">
+          <thead className="bg-offset-white-hover">
+            <tr className="text-md">
+              <th className="text-center px-4 py-3 font-semibold text-text">Article Id</th>
+              <th className="px-4 py-3 text-center font-semibold text-text">Article Title</th>
+              <th className="px-4 py-3 text-center font-semibold text-text">Article Likes</th>
+              <th className="px-4 py-3 text-center font-semibold text-text">Update</th>
+              <th className="px-4 py-3 text-center font-semibold text-text">Delete</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200 bg-white">
-            {ARTICLES.map((article) => (
-              <tr key={article.id} className="hover:bg-slate-50">
-                <td className="px-4 py-4 text-sm text-slate-600">{article.id}</td>
-                <td className="px-4 py-4 text-sm text-slate-600">{article.title}</td>
-                <td className="px-4 py-4 text-sm text-slate-600">{article.likes}</td>
-                <td className="px-4 py-4">
-                  <button className="rounded-md bg-emerald-500 px-3 py-1 text-sm font-medium text-white transition hover:bg-emerald-600">
+          <tbody className="divide-y divide-text/50 bg-offset-white">
+            {RECENT_ARTICLES.map((article) => (
+              <tr key={article.id} className="hover:bg-offset-white-hover">
+                <td className="px-4 py-4 text-sm text-text text-center">{article.id}</td>
+                <td className="px-4 py-4 text-sm text-text text-center">{article.title}</td>
+                <td className="px-4 py-4 text-sm text-text text-center">{article.likes}</td>
+                <td className="text-center">
+                  <button className="h-15 w-full hover:bg-green-400">
                     Update
                   </button>
                 </td>
-                <td className="px-4 py-4">
-                  <button className="rounded-md bg-rose-500 px-3 py-1 text-sm font-medium text-white transition hover:bg-rose-600">
+                <td className="">
+                  <button className="h-15 w-full hover:bg-red-600">
                     Delete
                   </button>
                 </td>
