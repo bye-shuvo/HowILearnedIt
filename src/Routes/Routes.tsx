@@ -4,7 +4,7 @@ import Home from "../Home/Home.tsx";
 import Admin from "../Admin/Admin.tsx";
 import Create from "../Admin/Create.tsx";
 import Article from "../Article/Article.tsx";
-import Dashboard from "../Admin/Dashboard.tsx";
+import Dashboard from "../Admin/Dashboard/Dashboard.tsx";
 import Login from "../Admin/Login.tsx";
 import Signup from "../Admin/Signup.tsx";
 
