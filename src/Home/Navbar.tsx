@@ -5,8 +5,10 @@ const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [menuClose, setMenuClose] = useState(true);
 
+  const check = () => setIsMobile(window.innerWidth <= 768);
+
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);

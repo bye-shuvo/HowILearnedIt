@@ -162,7 +162,7 @@ const Articles = () => {
   ).slice(0,5);
 
   return (
-    <section className="w-full">
+    <section className="w-full pb-5">
       <div className="overflow-x-auto border border-text bg-offset-white-hover shadow-sm">
         <table className="max-w-full divide-y divide-text/50">
           <thead className="bg-offset-white-hover">
@@ -178,7 +178,7 @@ const Articles = () => {
             {RECENT_ARTICLES.map((article) => (
               <tr key={article.id} className="hover:bg-offset-white-hover">
                 <td className="px-4 py-4 text-sm text-text text-center">{article.id}</td>
-                <td className="px-4 py-4 text-sm text-text text-center">{article.title}</td>
+                <td className="px-4 py-4 text-sm text-text text-center line-clamp-1">{article.title}</td>
                 <td className="px-4 py-4 text-sm text-text text-center">{article.likes}</td>
                 <td className="text-center">
                   <button className="h-15 w-full hover:bg-green-400">
