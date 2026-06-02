@@ -12,7 +12,7 @@
 #admin,
 #create,
 #article,
-#admin-login{
+#admin-login,#article-route{
   min-height: 100dvh;
   background: var(--color-offset-white);
   color: var(--color-text);
