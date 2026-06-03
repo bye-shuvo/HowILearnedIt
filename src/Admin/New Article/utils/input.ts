@@ -11,6 +11,17 @@ export const inputFields: articleInput[] = [
     labelName: "Article Title",
   },
   {
+    elementId: "article-category",
+    fieldName: "category",
+    labelName: "Article Category",
+  },
+  {
+    elementId: "article-cover",
+    fieldName: "cover",
+    labelName: "Article Cover Image",
+  },
+  { elementId: "article-tag", fieldName: "tag", labelName: "Article Tag" },
+  {
     elementId: "article-subtitle",
     fieldName: "subtitle",
     labelName: "Article Subtitle",
@@ -26,7 +37,6 @@ export const inputFields: articleInput[] = [
     fieldName: "content",
     labelName: "Article Content",
   },
-  { elementId: "article-tag", fieldName: "tag", labelName: "Article Tag" },
   {
     elementId: "article-topics",
     fieldName: "topics",
