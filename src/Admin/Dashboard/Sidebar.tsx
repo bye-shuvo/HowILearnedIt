@@ -24,7 +24,7 @@ const Sidebar = () => {
         Dashboard
       </Link>
       <Link
-        to={"/admin/atricle/new"}
+        to={"/admin/article/new"}
         className="flex gap-3 items-center px-5 py-2 hover:cursor-pointer hover:bg-offset-white-hover w-full"
       >
         <svg
