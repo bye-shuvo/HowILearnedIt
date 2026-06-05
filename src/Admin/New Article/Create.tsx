@@ -14,19 +14,12 @@ const Create = () => {
           Share your ideas through the boxes.
         </p>
         <form action="">
-          <ArticleInput
-            input={{
-              elementId: "article-title",
-              fieldName: "title",
-              labelName: "Article Title",
-            }}
-          />
           {inputFields.map((input, index) => {
             return <ArticleInput input={input} index={index} />;
           })}
           <div
             id="article-decision"
-            className="flex gap-3 w-full laptop-lg:pb-10"
+            className="flex gap-3 w-full laptop-lg:py-10"
           >
             <button className="ring-1 py-2 bg-offset-white-hover/90 hover:text-white hover:cursor-pointer hover:bg-text w-full">
               Draft Article
