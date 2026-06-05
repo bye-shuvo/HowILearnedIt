@@ -26,13 +26,13 @@ const Dashboard = () => {
   return (
     <div
       id="dashboard"
-      className="bg-offset-white min-h-screen px-4 tablet-lg:px-[10vw] pt-5 tablet-lg:pt-10 flex flex-col tablet-lg:flex-row items-start justify-center gap-10 tablet-lg:gap-10"
+      className="bg-offset-white min-h-screen px-4 tablet-lg:px-[20vw] pt-5 tablet-lg:pt-15 flex flex-col tablet-lg:flex-row items-start justify-center gap-10 tablet-lg:gap-10"
     >{
       isMobile ? <MobileSidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} /> : <Sidebar />
     }
     {
       !isSidebarOpen &&
-      <main className="tablet-lg:p-5 flex flex-col tablet-lg:gap-3">
+      <main className="w-full flex flex-col tablet-lg:gap-3">
         <h1 className="text-4xl laptop-lg:text-5xl font-Quintessential">
           Hi, Admin!
         </h1>

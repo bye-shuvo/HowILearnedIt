@@ -164,7 +164,7 @@ const Articles = () => {
   return (
     <section className="w-full pb-5">
       <div className="overflow-x-auto border border-text bg-offset-white-hover shadow-sm">
-        <table className="max-w-full divide-y divide-text/50">
+        <table className="w-full divide-y divide-text/50">
           <thead className="bg-offset-white-hover">
             <tr className="text-md">
               <th className="text-center px-4 py-3 font-semibold text-text">Article Id</th>
