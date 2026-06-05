@@ -84,8 +84,8 @@ const ArticleInput = ({
                   />
                 </svg>
                 <p>
-                  upload cover image of any of the following formats jpg, png,
-                  jpeg or use the generate button to generate based on your
+                  Upload cover image in any of the following formats png,
+                  jpeg or use the generate button to generate cover image based on your
                   content
                 </p>
               </div>
