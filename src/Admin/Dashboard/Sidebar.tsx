@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <section
       id="sidebar"
-      className="sticky tablet-lg:top-10 tablet-lg:p-5 flex flex-col items-center laptop-lg:h-fit text-nowrap"
+      className="sticky tablet-lg:top-10 tablet-lg:pr-5 flex flex-col items-center laptop-lg:h-fit text-nowrap"
     >
       <Link
         to={"/admin/dashboard"}
