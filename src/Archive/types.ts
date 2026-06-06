@@ -22,6 +22,12 @@ export const ARTICLE_TAGS = [
 
 export type ArticleTag = (typeof ARTICLE_TAGS)[number];
 
+export const STATUS = [
+  "draft" , "published" , "archived"
+]
+
+export type Status = (typeof STATUS)[number] ;
+
 export type ArticleSize = "featured" | "large" | "medium" | "small";
 
 export interface Article {
@@ -52,7 +58,7 @@ export interface Article {
   readTime: string;
   wordCount: number;
   featured: boolean;
-  status: "draft" | "published" | "archived" | string;
+  status: Status
 
   // Engagement
   views?: number;
