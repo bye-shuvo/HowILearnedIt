@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# HowILearnedIt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal developer blog for sharing writing on software, systems, and engineering culture.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 18 + TypeScript
+- Vite
+- React Router DOM (v6, file-based nested routing)
+- Tailwind CSS v4 (custom design tokens, custom breakpoints)
+- unified / remark / rehype (Markdown → HTML pipeline)
+- Google Fonts (Playfair Display, Cormorant Garamond, Lato, Merriweather, Great Vibes, Quintessential, Tangerine)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Public
 
-## Expanding the ESLint configuration
+- Landing page with stats, featured article, article grid, topic explorer, newsletter signup
+- Article archive with search bar, tag filter (horizontal scroll), sort (latest/oldest/popular), and paginated load-more
+- Full article page with:
+  - Sticky read-progress bar
+  - Breadcrumb navigation
+  - Markdown content renderer (GFM, syntax blocks, sanitized HTML)
+  - Topic tags
+  - Related articles (same tag)
+  - Discussion/comment input section
+  - Copy link + Share buttons
+- Responsive navbar (desktop sticky / mobile hamburger menu)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Admin (`/admin/*`)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Token-gated admin shell (redirects to login if no token)
+- Dashboard with overall stats and recent articles table (update/delete actions)
+- Responsive sidebar — desktop sticky sidebar, mobile full-screen drawer
+- Article editor (`/admin/article/new`) with dynamic form fields:
+  - Title, subtitle, slug, excerpt, topics, author name
+  - Category selector (dropdown from tag list)
+  - Status setter (draft / published / archived)
+  - Cover image uploader with preview + generate placeholder
+  - Markdown content textarea with rephrase button
+  - Draft and Publish actions
+- All articles controller (`/admin/article/all`) — scaffold in place
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── Admin/
+│   ├── Dashboard/          # Stats, articles table, sidebar, mobile sidebar
+│   ├── New Article/        # Article editor + form field components
+│   ├── All Articles/       # Article controller (WIP)
+│   ├── Admin.tsx           # Auth guard + layout
+│   ├── ArticleRoute.tsx    # Nested route shell for article management
+│   ├── Login.tsx           # Login page (WIP)
+│   └── Signup.tsx          # Signup page (WIP)
+├── Archive/                # Article listing page + search + types
+├── Article/                # Single article view + components
+├── Home/                   # Landing page + all home sections
+├── Routes/                 # React Router config
+└── utils/                  # Shared components + markdown CSS
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Routes
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Path | Page |
+|---|---|
+| `/` | Home |
+| `/articles` | Archive |
+| `/articles/:slug` | Article |
+| `/admin` | Admin landing |
+| `/admin/dashboard` | Dashboard |
+| `/admin/article` | Article route hub |
+| `/admin/article/new` | Create article |
+| `/admin/article/all` | All articles |
+| `/admin/login` | Login |
+| `/admin/signup` | Signup |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Design System
+
+Custom Tailwind theme with:
+- Colors: `offset-white` (#f5efe6), `offset-white-hover` (#ede3d6), `text` (#2c1810)
+- Breakpoints: `mobile-sm` → `desktop-lg` (320px – 3440px)
+- Typography scale: serif display fonts for headings, Lato base, Merriweather for blog content
+
+## Status
+
+Work in progress. Auth (login/signup), backend integration, and article controller are not yet implemented.
