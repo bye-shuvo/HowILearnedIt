@@ -19,7 +19,7 @@ const Create = () => {
           })}
           <div
             id="article-decision"
-            className="flex gap-3 w-full laptop-lg:py-10"
+            className="flex gap-3 w-full py-5 laptop-lg:py-10"
           >
             <button className="ring-1 py-2 bg-offset-white-hover/90 hover:text-white hover:cursor-pointer hover:bg-text w-full">
               Draft Article

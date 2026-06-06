@@ -3,6 +3,7 @@ import ImageUploader from "./ImageUploader.tsx";
 import ContentEditor from "./ContentEditor.tsx";
 import CategorySelector from "./CategorySelector.tsx";
 import type { Key } from "react";
+import StatusSetter from "./StatusSetter.tsx";
 
 const ArticleInput = ({
   input,
@@ -26,6 +27,8 @@ const ArticleInput = ({
         <CategorySelector input={input} />
       ) : input.fieldName === "cover" ? (
         <ImageUploader input={input} />
+      ) :input.fieldName === "status" ? (
+        <StatusSetter input={input} />
       ) : (
         <input
           key={index}

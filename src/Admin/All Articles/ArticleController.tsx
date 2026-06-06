@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ArticleControl = () => {
+const ArticleController = () => {
   return (
     <div>
       
@@ -8,4 +8,5 @@ const ArticleControl = () => {
   )
 }
 
-export default ArticleControl
+export default ArticleController
+
