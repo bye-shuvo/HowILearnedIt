@@ -1,12 +1,11 @@
 import React from 'react'
 import type { articleInput } from './input';
+import ContentController from './ContentController';
 
 const ContentEditor = ({input} : {input : articleInput}) => {
   return (
         <div id="content-editor" className="relative flex flex-col gap-3 w-full">
-          <div id="content-controls" className="absolute bottom-13 h-15 w-full bg-red-500 text-center">
-            Temporary fields for text control
-          </div>
+          <ContentController />
           <textarea
             name={input.fieldName}
             id={input.fieldName}
