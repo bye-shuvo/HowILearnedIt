@@ -4,7 +4,7 @@ const ContentController = () => {
   return (
     <div
       id="content-controls"
-      className="absolute bottom-13 h-15 w-full bg-red-500 text-center"
+      className="absolute bottom-15 py-3 px-5 w-fit bg-red-500 text-center left-1/2 -translate-x-1/2"
     >
       Temporary fields for text control
     </div>
