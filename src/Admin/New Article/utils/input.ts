@@ -40,9 +40,8 @@ export const inputFields: articleInput[] = [
   {
     elementId: "article-topics",
     fieldName: "topics",
-    labelName: "Article Topics",
+    labelName: "Article Topics (Add topic tags which are related to the article)",
   },
-  { elementId: "article-status", fieldName: "status", labelName: "Status" },
 
   // Author fields
   {
