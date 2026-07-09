@@ -281,6 +281,8 @@ const Articles = () => {
           );
         })}
       </div>
+      {
+        lastArticleIndex < (ARTICLES.length) &&
       <div id="pagination" className="h-fit w-full flex justify-center">
         <button
           id="loadmore"
@@ -290,6 +292,7 @@ const Articles = () => {
           Load More
         </button>
       </div>
+      }
     </section>
   );
 };
