@@ -5,7 +5,7 @@ const Admin = () => {
   const location = useLocation();
   const token = true;
 
-  if (!token) return <Navigate to={"/admin/login"} replace />
+  if (!token) return <Navigate to={"/admin/login"} state={token} replace />
   else if (location.pathname === "/admin" || location.pathname === "/admin/")
     return <div id="admin" className="flex flex-col justify-center items-center tablet-lg:gap-5 gap-3">
       <img className="h-40 tablet-lg:h-50 laptop-lg:h-60 aspect-auto drop-shadow-2xl drop-shadow-text/50" src="/admin.png" alt="" />
