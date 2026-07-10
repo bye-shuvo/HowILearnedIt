@@ -7,17 +7,33 @@ const Create = () => {
   return (
     <div id="create">
       <section id="article-editor" className="pt-5 laptop-lg:pt-10">
-        <section id="article-header" className="flex justify-between items-center">
+        <section
+          id="article-header"
+          className="flex justify-between items-center"
+        >
           <div id="article-header-title-subtitle">
-          <h1 className="laptop-lg:text-5xl font-Quintessential text-4xl pb-2">
-            Article Editor
-          </h1>
-          <p className="laptop-lg:pb-5 laptop-lg:text-md text-sm">
-            Share your ideas through the boxes.
-          </p>
+            <h1 className="laptop-lg:text-5xl font-Quintessential text-4xl pb-2">
+              Article Editor
+            </h1>
+            <p className="laptop-lg:pb-5 laptop-lg:text-md text-sm">
+              Share your ideas through the boxes.
+            </p>
           </div>
-          <Link to={"/admin/dashboard"} id="article-create-close" className="hover:bg-offset-white-hover p-4 cursor-pointer">
-            <svg className="h-4 w-4 laptop-lg:h-8 laptop-lg:w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path className="fill-text" d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"/></svg>
+          <Link
+            to={"/admin/dashboard"}
+            id="article-create-close"
+            className="hover:bg-offset-white-hover p-4 cursor-pointer"
+          >
+            <svg
+              className="h-4 w-4 laptop-lg:h-8 laptop-lg:w-8"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+            >
+              <path
+                className="fill-text"
+                d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"
+              />
+            </svg>
           </Link>
         </section>
         <form action="">

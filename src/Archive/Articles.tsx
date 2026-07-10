@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Articles = () => {
   const Navigate = useNavigate();
-  const [lastArticleIndex , setLastArticleIndex] = useState(1);
+  const [lastArticleIndex, setLastArticleIndex] = useState(1);
   const ARTICLES: Article[] = [
     {
       id: "1",
@@ -14,7 +14,22 @@ const Articles = () => {
       subtitle: "On discipline, restraint, and the architecture of thought",
       excerpt:
         "Why the most maintainable systems are born not from cleverness, but from discipline and restraint.",
-      content: "",
+      content: `  ## On discipline, restraint, and the architecture of thought
+  
+  Modern software systems often fail not because developers lack intelligence, but because they lack discipline.
+  
+  ## Why Simplicity Matters
+  
+  Simple systems are:
+  - easier to maintain
+  - easier to scale
+  - easier to debug
+  
+  \`\`\`ts
+  console.log("This is a code")
+  \`\`\`
+
+  ## Conclusion`,
       tag: "Architecture",
       topics: ["Clean Code", "Software Design", "Best Practices"],
       author: { id: "1", name: "Alex Morgan", initials: "AM" },
@@ -160,13 +175,17 @@ const Articles = () => {
       likes: 267,
     },
   ];
-  const FILTERED_ARTICLES = useRef<Article[]>(ARTICLES.filter((_ ,index) => index <= 1));
+  const FILTERED_ARTICLES = useRef<Article[]>(
+    ARTICLES.filter((_, index) => index <= 1),
+  );
 
   const handleLoadMore = (e: React.MouseEvent) => {
     e.preventDefault();
-    const loadedArticles: Article[] = ARTICLES.filter((_, index) => index <= lastArticleIndex*2);
+    const loadedArticles: Article[] = ARTICLES.filter(
+      (_, index) => index <= lastArticleIndex * 2,
+    );
     FILTERED_ARTICLES.current = loadedArticles;
-    setLastArticleIndex(prev => prev + prev);
+    setLastArticleIndex((prev) => prev + prev);
   };
 
   return (
@@ -181,7 +200,9 @@ const Articles = () => {
             <div
               key={index}
               className="flex flex-col gap-3 p-5 laptop-lg:p-7 border-b border-r border-text box-content group text-sm hover:bg-offset-white-hover hover:cursor-pointer"
-              onClick={() => Navigate(`/articles/${article.slug}` , {state : article})}
+              onClick={() =>
+                Navigate(`/articles/${article.slug}`, { state: article })
+              }
             >
               <p className="text-base laptop-lg:text-lg">{article.tag}</p>
               <p>{article.slug}</p>
@@ -281,18 +302,17 @@ const Articles = () => {
           );
         })}
       </div>
-      {
-        lastArticleIndex < (ARTICLES.length) &&
-      <div id="pagination" className="h-fit w-full flex justify-center">
-        <button
-          id="loadmore"
-          className="px-[10vw] py-3 text-center laptop-lg:text-md text-sm ring-1 ring-text hover:bg-offset-white-hover hover:cursor-pointer"
-          onClick={handleLoadMore}
-        >
-          Load More
-        </button>
-      </div>
-      }
+      {lastArticleIndex < ARTICLES.length && (
+        <div id="pagination" className="h-fit w-full flex justify-center">
+          <button
+            id="loadmore"
+            className="px-[10vw] py-3 text-center laptop-lg:text-md text-sm ring-1 ring-text hover:bg-offset-white-hover hover:cursor-pointer"
+            onClick={handleLoadMore}
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </section>
   );
 };
