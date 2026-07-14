@@ -4,6 +4,12 @@ import { inputFields } from "./utils/input";
 import { Link } from "react-router-dom";
 
 const Create = () => {
+
+  const handleForm = async (e: any) => {
+    e.preventDefault();
+  }
+
+
   return (
     <div id="create">
       <section id="article-editor" className="pt-5 laptop-lg:pt-10">
@@ -36,7 +42,7 @@ const Create = () => {
             </svg>
           </Link>
         </section>
-        <form action="">
+        <form action={handleForm}>
           {inputFields.map((input, index) => {
             return <ArticleInput input={input} index={index} />;
           })}
