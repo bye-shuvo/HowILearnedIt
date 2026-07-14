@@ -11,6 +11,12 @@ export const inputFields: articleInput[] = [
     labelName: "Article Title",
   },
   {
+    elementId: "article-subtitle",
+    fieldName: "subtitle",
+    labelName: "Article Subtitle",
+  },
+  { elementId: "article-slug", fieldName: "slug", labelName: "Article Slug (Auto generated based on title, Can be modified)" },
+  {
     elementId: "article-category",
     fieldName: "category",
     labelName: "Article Category",
@@ -20,29 +26,22 @@ export const inputFields: articleInput[] = [
     fieldName: "cover",
     labelName: "Article Cover Image",
   },
-  { elementId: "article-tag", fieldName: "tag", labelName: "Article Tag" },
-  {
-    elementId: "article-subtitle",
-    fieldName: "subtitle",
-    labelName: "Article Subtitle",
-  },
-  { elementId: "article-slug", fieldName: "slug", labelName: "Article Slug" },
-  {
-    elementId: "article-excerpt",
-    fieldName: "excerpt",
-    labelName: "Article Excerpt",
-  },
   {
     elementId: "article-content",
     fieldName: "content",
     labelName: "Article Content",
   },
   {
+    elementId: "article-excerpt",
+    fieldName: "excerpt",
+    labelName: "Article Excerpt (Auto generated based on article content, Can be modified)",
+  },
+  {
     elementId: "article-topics",
     fieldName: "topics",
     labelName: "Article Topics (Add topic tags which are related to the article)",
   },
-
+  
   // Author fields
   {
     elementId: "author-name",
