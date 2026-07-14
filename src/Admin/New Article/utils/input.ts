@@ -8,7 +8,7 @@ export const inputFields: articleInput[] = [
   {
     elementId: "article-title",
     fieldName: "title",
-    labelName: "Article Title",
+    labelName: "Article Title*",
   },
   {
     elementId: "article-subtitle",
@@ -41,8 +41,6 @@ export const inputFields: articleInput[] = [
     fieldName: "topics",
     labelName: "Article Topics (Add topic tags which are related to the article)",
   },
-  
-  // Author fields
   {
     elementId: "author-name",
     fieldName: "author.name",

@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 
 const Create = () => {
 
-  const handleForm = async (e: any) => {
-    e.preventDefault();
+  const handleForm = () => {
+    
   }
-
 
   return (
     <div id="create">
@@ -44,7 +43,7 @@ const Create = () => {
         </section>
         <form action={handleForm}>
           {inputFields.map((input, index) => {
-            return <ArticleInput input={input} index={index} />;
+            return <ArticleInput key={index} input={input} index={index} />;
           })}
           <div
             id="article-decision"
