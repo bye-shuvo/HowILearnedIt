@@ -1,6 +1,6 @@
 import type { articleInput } from "./input.ts";
 import ImageUploader from "./ImageUploader.tsx";
-import ContentEditor from "./ContentEditor.tsx";
+import ContentEditor from "../Text_Editor_System/ContentEditor.tsx";
 import CategorySelector from "./CategorySelector.tsx";
 import type { Key } from "react";
 import ArticleTopics from "./ArticleTopics.tsx";
