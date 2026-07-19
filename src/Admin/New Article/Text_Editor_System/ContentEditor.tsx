@@ -3,28 +3,41 @@ import type { articleInput } from "../utils/input";
 import ContentController from "./ContentController";
 import type { IModifier } from "./TextModifier";
 
+interface ITextNode {
+  id: string;
+  text: string;
+  modifiers: string[];
+}
+
 const ContentEditor = ({ input }: { input: articleInput }) => {
+  const [text, setText] = useState<string>("");
   const [activeModifiers, setActiveModifiers] = useState<IModifier[]>();
   const contentRef = useRef<HTMLDivElement | null>(null);
 
-  const handleInput = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
-    let modifiedChar = e.key;
-    console.log(modifiedChar);
-    if(!e.key.match('\A-Za-z0-1\@')){
-      return '';
-    }
-    const modiferText = activeModifiers?.map((modifier) => {
-      modifiedChar = modifier.apply(e.key);
-      return modifiedChar;
-    }).join("");
+  const handleInput = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      const allowedTextKey = /^[\p{L}\p{N}\p{P}\p{S}\s]$/u;
 
-    if (!modiferText) {
-      return;
-    }
-    if (contentRef.current) {
-      contentRef.current.innerHTML = modiferText;
-    }
-  } , [activeModifiers]);
+      if (!allowedTextKey.test(e.key)) {
+        return;
+      }
+
+      e.preventDefault();
+      
+      const modifierText = activeModifiers
+        ?.reduce((nextChar: string, modifier) => {
+          return modifier.apply(nextChar);
+        }, e.key) || e.key;
+
+      const nextText = text.concat(modifierText);
+      setText(nextText);
+
+      if (contentRef.current) {
+        contentRef.current.innerHTML = nextText;
+      }
+    },
+    [text, activeModifiers],
+  );
 
   return (
     <div id={input.fieldName} className="flex flex-col gap-3">
@@ -35,17 +48,18 @@ const ContentEditor = ({ input }: { input: articleInput }) => {
         <div
           ref={contentRef}
           id={input.fieldName}
-          role="textbox"
           aria-label={input.labelName}
           className="text-[17px] w-full min-h-100 outline-0 p-4 max-h-dvh overflow-y-scroll overflow-x-hidden"
+          role="textbox"
+          inputMode="text"
           contentEditable={true}
           translate="no"
           onKeyDown={handleInput}
         />
         <ContentController
-          contentRef = {contentRef}
-          activeModifiers = {activeModifiers}
-          setActiveModifiers = {setActiveModifiers}
+          contentRef={contentRef}
+          activeModifiers={activeModifiers}
+          setActiveModifiers={setActiveModifiers}
         />
       </div>
       <button
