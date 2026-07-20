@@ -7,6 +7,11 @@ const ContentController = (props: {
   activeModifiers: IModifier[] | undefined;
   setActiveModifiers: Dispatch<React.SetStateAction<IModifier[] | undefined>>;
 }) => {
+
+  const focusEditor = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    props.contentRef.current?.focus();
+  }
   
   const handleActiveModifers = (name: string) => {
     const modifierManager = new ModifierManager();
@@ -23,14 +28,14 @@ const ContentController = (props: {
         return prev ? [...prev , activeModifier] : [activeModifier];
       }
     });
-
-    console.log(props.activeModifiers);
   };
 
   return (
     <div
       id="content-controls"
       className="absolute bottom-2 py-3 px-5 w-fit text-center left-1/2 -translate-x-1/2 flex gap-2 bg-offset-white-hover ring-1 ring-text"
+     onMouseDownCapture={(e) => e.preventDefault()}
+     onClick={focusEditor}
     >
       {controls.map((control, index) => {
         return (
@@ -38,7 +43,7 @@ const ContentController = (props: {
             key={index}
             className={`cursor-pointer px-3 py-1 bg-text/80 ring-1 ring-text rounded hover:bg-text/90`}
             title={control.name}
-            onClick={() => handleActiveModifers(control.name)}
+            onClick={(e) => {e.preventDefault(); handleActiveModifers(control.name)}}
           >
             {control.icon}
           </button>
