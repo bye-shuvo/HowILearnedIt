@@ -54,7 +54,7 @@ const ContentEditor = ({ input }: { input: articleInput }) => {
           id={input.fieldName}
           aria-label={input.labelName}
           aria-multiline={true}
-          className="text-[17px] w-full min-h-100 outline-0 p-4 max-h-dvh overflow-y-scroll overflow-x-hidden"
+          className="text-[17px] w-full min-h-100 outline-0 p-4 max-h-[80dvh] overflow-y-scroll overflow-x-hidden"
           role="textbox"
           inputMode="text"
           contentEditable={true}

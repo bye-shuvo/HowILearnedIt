@@ -23,9 +23,9 @@ const ContentController = (props: {
 
     props.setActiveModifiers((prev) => {
       if (prev?.includes(activeModifier)) {
-        return prev;
+        return modifierManager.remove(name, prev);
       } else {
-        return prev ? [...prev , activeModifier] : [activeModifier];
+        return modifierManager.add(activeModifier, prev);
       }
     });
   };
