@@ -18,6 +18,10 @@ const ContentEditor = ({ input }: { input: articleInput }) => {
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       const allowedTextKey = /^[\p{L}\p{N}\p{P}\p{S}\s]$/u;
 
+      if(e.key === "Backspace"){
+
+      }
+
       if (!allowedTextKey.test(e.key)) {
         return;
       }
@@ -49,12 +53,14 @@ const ContentEditor = ({ input }: { input: articleInput }) => {
           ref={contentRef}
           id={input.fieldName}
           aria-label={input.labelName}
+          aria-multiline={true}
           className="text-[17px] w-full min-h-100 outline-0 p-4 max-h-dvh overflow-y-scroll overflow-x-hidden"
           role="textbox"
           inputMode="text"
           contentEditable={true}
           translate="no"
           onKeyDown={handleInput}
+          autoFocus={true}
         />
         <ContentController
           contentRef={contentRef}
