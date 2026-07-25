@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import type { articleInput } from "../utils/input";
 import ContentController from "./ContentController";
 import type { IModifier } from "./TextModifier";
@@ -14,6 +14,7 @@ const ContentEditor = ({ input }: { input: articleInput }) => {
   const [textNodes, setTextNodes] = useState<ITextNode[]>();
   const [activeModifiers, setActiveModifiers] = useState<IModifier[]>();
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<string>("");
 
   const handleInput = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -28,13 +29,11 @@ const ContentEditor = ({ input }: { input: articleInput }) => {
 
       e.preventDefault();
       let modifiedNode: ITextNode;
-      const modifierNames = activeModifiers?.map(modifier => modifier.name);
 
       if (activeModifiers && activeModifiers.length > 0) {
 
         const modifers = activeModifiers.map((modifier) => modifier.name);
-        const text = contentRef?.current?.textContent;
-        const textWithNewChar = text ? text.concat(e.key) : e.key ;
+        textRef.current = textRef.current.concat(e.key) ;
 
         modifiedNode = activeModifiers?.reduce(
           (nextNode: ITextNode, modifier: IModifier, index: number) => {
@@ -47,21 +46,20 @@ const ContentEditor = ({ input }: { input: articleInput }) => {
             };
             return modifierNode;
           },
-          { id: 0, text: textWithNewChar, modifiers: modifers } as ITextNode,
+          { id: 0, text: textRef.current, modifiers: modifers } as ITextNode,
         );
       } else {
-        const text = contentRef?.current?.textContent;
-        const textWithNewChar = text ? text.concat(e.key) : e.key;
+        textRef.current = textRef.current.concat(e.key) ;
         modifiedNode = {
           id: textNodes ? textNodes.length : 0,
-          text: `<p>${textWithNewChar}</p>`,
+          text: `<p>${textRef.current}</p>`,
           modifiers: [],
         };
       }
       console.log("modifiedNode \n", [modifiedNode]);
       console.log("TextNode \n", textNodes);
 
-      setTextNodes([modifiedNode]);
+      setTextNodes(prev => prev ? [...prev, modifiedNode] : [modifiedNode]);
 
       //working section
       const modifierText =
@@ -78,6 +76,10 @@ const ContentEditor = ({ input }: { input: articleInput }) => {
     },
     [text, activeModifiers],
   );
+
+  useEffect(() => {
+    textRef.current = "";
+  }, [activeModifiers])
 
   return (
     <div id="content-container" className="flex flex-col gap-3">
