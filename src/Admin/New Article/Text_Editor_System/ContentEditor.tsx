@@ -1,7 +1,8 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
+// src/Admin/New Article/Text_Editor_System/ContentEditor.tsx
+import React, { useCallback, useRef, useState } from "react";
 import type { articleInput } from "../utils/input";
 import ContentController from "./ContentController";
-import type { IModifier } from "./TextModifier";
+import controls, { type IModifier } from "./TextModifier";
 
 interface ITextNode {
   id: number;
@@ -9,77 +10,65 @@ interface ITextNode {
   modifiers: string[];
 }
 
+const sameModifiers = (a: string[], b: string[]) =>
+  a.length === b.length && a.every((m) => b.includes(m));
+
+const wrapNode = (node: ITextNode): string =>
+  node.modifiers.reduce((acc, name) => {
+    const mod = controls.find((c) => c.name === name);
+    return mod ? mod.apply(acc) : acc;
+  }, node.text);
+
 const ContentEditor = ({ input }: { input: articleInput }) => {
-  const [text, setText] = useState<string>("");
-  const [textNodes, setTextNodes] = useState<ITextNode[]>();
+  const [textNodes, setTextNodes] = useState<ITextNode[]>([]);
   const [activeModifiers, setActiveModifiers] = useState<IModifier[]>();
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const textRef = useRef<string>("");
+  const idRef = useRef(0);
+
+  const paint = (nodes: ITextNode[]) => {
+    const el = contentRef.current;
+    if (!el) return;
+    el.innerHTML = `<p>${nodes.map(wrapNode).join("")}</p>`;
+    const range = document.createRange();
+    const sel = window.getSelection();
+    range.selectNodeContents(el);
+    range.collapse(false);
+    sel?.removeAllRanges();
+    sel?.addRange(range);
+  };
 
   const handleInput = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
-      const allowedTextKey = /^[\p{L}\p{N}\p{P}\p{S}\s]$/u;
+      const modifierNames = activeModifiers?.map((m) => m.name) ?? [];
 
       if (e.key === "Backspace") {
-      }
-
-      if (!allowedTextKey.test(e.key)) {
+        e.preventDefault();
+        if (!textNodes.length) return;
+        const last = textNodes[textNodes.length - 1];
+        const text = last.text.slice(0, -1);
+        const next = text
+          ? [...textNodes.slice(0, -1), { ...last, text }]
+          : textNodes.slice(0, -1);
+        setTextNodes(next);
+        paint(next);
         return;
       }
 
+      if (!/^[\p{L}\p{N}\p{P}\p{S}\s]$/u.test(e.key)) return;
       e.preventDefault();
-      let modifiedNode: ITextNode;
 
-      if (activeModifiers && activeModifiers.length > 0) {
+      const last = textNodes.at(-1);
+      const next =
+        last && sameModifiers(last.modifiers, modifierNames)
+          ? [...textNodes.slice(0, -1), { ...last, text: last.text + e.key }]
+          : [...textNodes, { id: idRef.current++, text: e.key, modifiers: modifierNames }];
 
-        const modifers = activeModifiers.map((modifier) => modifier.name);
-        textRef.current = textRef.current.concat(e.key) ;
-
-        modifiedNode = activeModifiers?.reduce(
-          (nextNode: ITextNode, modifier: IModifier, index: number) => {
-            const modifiedText = modifier.apply(nextNode.text);
-
-            const modifierNode: ITextNode = {
-              id: textNodes ? textNodes.length : 0,
-              text: modifiedText,
-              modifiers: modifers,
-            };
-            return modifierNode;
-          },
-          { id: 0, text: textRef.current, modifiers: modifers } as ITextNode,
-        );
-      } else {
-        textRef.current = textRef.current.concat(e.key) ;
-        modifiedNode = {
-          id: textNodes ? textNodes.length : 0,
-          text: `<p>${textRef.current}</p>`,
-          modifiers: [],
-        };
-      }
-      console.log("modifiedNode \n", [modifiedNode]);
-      console.log("TextNode \n", textNodes);
-
-      setTextNodes(prev => prev ? [...prev, modifiedNode] : [modifiedNode]);
-
-      //working section
-      const modifierText =
-        activeModifiers?.reduce((nextChar: string, modifier) => {
-          return modifier.apply(nextChar);
-        }, e.key) || e.key;
-
-      const nextText = text.concat(modifierText);
-      setText(nextText);
-
-      if (contentRef.current) {
-        contentRef.current.innerHTML = nextText;
-      }
+      setTextNodes(next);
+      paint(next);
+      console.log(next);
     },
-    [text, activeModifiers],
+    [activeModifiers, textNodes],
   );
-
-  useEffect(() => {
-    textRef.current = "";
-  }, [activeModifiers])
 
   return (
     <div id="content-container" className="flex flex-col gap-3">
