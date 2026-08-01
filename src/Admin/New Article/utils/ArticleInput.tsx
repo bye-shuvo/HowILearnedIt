@@ -1,6 +1,6 @@
 import type { articleInput } from "./input.ts";
 import ImageUploader from "./ImageUploader.tsx";
-import ContentEditor from "../Text_Editor_System/ContentEditor.tsx";
+import Editor from "../Text_Editor/TextEditor.tsx";
 import CategorySelector from "./CategorySelector.tsx";
 import type { Key } from "react";
 import ArticleTopics from "./ArticleTopics.tsx";
@@ -22,7 +22,7 @@ const ArticleInput = ({
         {input.labelName}
       </label>
       {input.fieldName === "content" ? (
-        <ContentEditor input={input} />
+        <Editor />
       ) : input.fieldName === "category" ? (
         <CategorySelector input={input} />
       ) : input.fieldName === "cover" ? (

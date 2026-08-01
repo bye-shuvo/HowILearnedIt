@@ -1,5 +1,5 @@
 // src/Admin/New Article/Text_Editor_System/ContentEditor.tsx
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import type { articleInput } from "../utils/input";
 import ContentController from "./ContentController";
 import controls, { type IModifier } from "./TextModifier";
