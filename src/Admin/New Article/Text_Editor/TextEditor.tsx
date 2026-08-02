@@ -12,13 +12,13 @@ import {
   withReact,
   type RenderElementProps,
   type ReactEditor,
+  type RenderLeafProps,
 } from "slate-react";
 import CodeElement from "./CodeElement";
 import DefaultElement from "./DefaultElement";
+import Leaf from "./Leaf";
 
-type CustomElement =
-  | { type: "paragraph"; children: CustomText[] }
-  | { type: "code"; children: CustomText[] };
+type CustomElement = { type: string; children: CustomText[] };
 
 type CustomText = { text: string };
 
@@ -37,14 +37,13 @@ const TextEditor = () => {
     if (e.key === "&") {
       e.preventDefault();
       editor.insertText("and");
-
     } else if (e.key === "`" && e.ctrlKey) {
       e.preventDefault();
 
       const [match] = Editor.nodes(editor, {
         match: (n) => Element.isElement(n) && n.type === "code",
       });
-      
+
       Transforms.setNodes(
         editor,
         { type: match ? "paragraph" : "code" },
@@ -52,8 +51,17 @@ const TextEditor = () => {
           match: (n) => Element.isElement(n) && Editor.isBlock(editor, n),
         },
       );
+    } else if (e.ctrlKey && e.key === "b") {
+      e.preventDefault();
+      const marks = Editor.marks(editor) as Record<string, unknown> | null;
+      const isBold = marks?.bold === true;
+      isBold ? Editor.removeMark(editor, "bold") : Editor.addMark(editor, "bold", true);
     }
   }, []);
+
+  const renderLeaf = (props: RenderLeafProps) => {
+    return <Leaf {...props} />;
+  };
 
   const renderElement = useCallback((props: RenderElementProps) => {
     if (props.element.type === "code") {
@@ -69,9 +77,10 @@ const TextEditor = () => {
       initialValue={[{ type: "paragraph", children: [{ text: "" }] }]}
     >
       <Editable
-        className="ring-1 ring-text px-2 py-1 outline-none min-h-100"
+        className="ring-1 ring-text px-2 py-1 min-h-100"
         onKeyDown={handleKeydown}
         renderElement={renderElement}
+        renderLeaf={renderLeaf}
       />
     </Slate>
   );
