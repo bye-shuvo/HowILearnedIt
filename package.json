@@ -20,6 +20,8 @@
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
+    "slate": "^0.126.0",
+    "slate-react": "^0.126.0",
     "tailwindcss": "^4.3.0",
     "unified": "^11.0.5"
   },
@@ -35,6 +37,7 @@
     "globals": "^17.5.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "vitest": "^4.1.10"
   }
 }
