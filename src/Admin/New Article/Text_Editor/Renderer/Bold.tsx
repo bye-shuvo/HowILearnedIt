@@ -2,7 +2,7 @@ import React from 'react'
 import type { RenderLeafProps } from 'slate-react';
 
 const Bold = (props: RenderLeafProps) => {
-  const leaf: any = props.leaf
+  const leaf = props.leaf
   return (
     <span {...props.attributes} className={`${leaf.bold ? "font-bold" : "font-normal"}`}>
       {props.children}

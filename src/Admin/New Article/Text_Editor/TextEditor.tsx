@@ -16,16 +16,15 @@ import {
 } from "slate-react";
 import CodeElement from "./CodeElement";
 import DefaultElement from "./DefaultElement";
-import Bold from "./Bold";
+import Bold from "./Renderer/Bold";
+import ContentController from "./ContentController";
+import controls from "./TextModifier";
 
 type CustomElement = { type: string; children: CustomText[] };
 
 type CustomText = {
   text: string;
-  bold?: boolean;
-  italic?: boolean;
-  underline?: boolean;
-  strikeThrough?: boolean;
+  [key: string]: any;
 };
 
 declare module "slate" {
@@ -39,30 +38,37 @@ declare module "slate" {
 const TextEditor = () => {
   const [editor] = useState(() => withReact(createEditor()));
 
-  const CustomEditor = {
+  interface ICustomEditor {
+    isMarkActive: (editor: Editor, mark: string) => boolean;
+    isBlockActive: (editor: Editor, block: Element["type"]) => boolean;
+    toggleMark: (editor: Editor, mark: string) => void;
+    toggleBlock: (editor: Editor, block: Element["type"]) => void;
+  }
+
+  const CustomEditor: ICustomEditor = {
     isMarkActive(editor: Editor, mark: string) {
-      const marks = Editor.marks(editor) as Record<string, unknown> | null;
-      return marks ? (marks as Record<string, boolean>)[mark] === true : false;
+      const marks = Editor.marks(editor);
+      return marks ? marks?.[mark] === true : false;
     },
 
-    isBlockActive(editor: Editor, block: string) {
+    isBlockActive(editor: Editor, block: Element["type"]) {
       const [match] = Editor.nodes(editor, {
         match: (n) => Element.isElement(n) && n.type === block,
       });
 
-      return match;
+      return !!match;
     },
 
     toggleMark(editor: Editor, mark: string) {
-      if (this.isMarkActive(editor, mark)) {
+      if (CustomEditor.isMarkActive(editor, mark)) {
         editor.removeMark(mark);
       } else {
         editor.addMark(mark, true);
       }
     },
 
-    toggleBlock(editor: Editor, block: string) {
-      const isActive = this.isBlockActive(editor, block);
+    toggleBlock(editor: Editor, block: Element["type"]) {
+      const isActive = CustomEditor.isBlockActive(editor, block);
       Transforms.setNodes(
         editor,
         { type: isActive ? undefined : block },
@@ -77,11 +83,9 @@ const TextEditor = () => {
     if (e.key === "&") {
       e.preventDefault();
       editor.insertText("and");
-
     } else if (e.key === "`" && e.ctrlKey) {
       e.preventDefault();
       CustomEditor.toggleBlock(editor, "code");
-      
     } else if (e.ctrlKey && e.key === "b") {
       e.preventDefault();
       CustomEditor.toggleMark(editor, "bold");
@@ -89,7 +93,15 @@ const TextEditor = () => {
   }, []);
 
   const renderLeaf = useCallback((props: RenderLeafProps) => {
-    return <Bold {...props} />;
+    const control = controls.find(
+      (c) => c.name === Object.keys(props.leaf).find((key) => key === c.name)
+    );
+
+    const element = control?.apply(props);
+    if (element) return element;
+
+    // default leaf renderer - must return a React element
+    return <span {...props.attributes}>{props.children}</span>;
   }, []);
 
   const renderElement = useCallback((props: RenderElementProps) => {
@@ -105,8 +117,9 @@ const TextEditor = () => {
       editor={editor}
       initialValue={[{ type: "paragraph", children: [{ text: "" }] }]}
     >
+      <ContentController editor={editor} CustomEditor={CustomEditor} />
       <Editable
-        className="ring-1 ring-text px-2 py-1 min-h-100"
+        className="text-[15px] w-full min-h-100 ring-1 p-4 max-h-[80dvh]"
         onKeyDown={handleKeydown}
         renderElement={renderElement}
         renderLeaf={renderLeaf}
