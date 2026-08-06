@@ -14,11 +14,10 @@ import {
   type ReactEditor,
   type RenderLeafProps,
 } from "slate-react";
-import CodeElement from "./CodeElement";
+import CodeElement from "./Renderer - Element/CodeElement";
 import DefaultElement from "./DefaultElement";
-import Bold from "./Renderer/Bold";
 import ContentController from "./ContentController";
-import controls from "./TextModifier";
+import Leaf from "./Renderer - Leaf/Leaf";
 
 type CustomElement = { type: string; children: CustomText[] };
 
@@ -65,6 +64,7 @@ const TextEditor = () => {
       } else {
         editor.addMark(mark, true);
       }
+      console.log(Editor.marks(editor));
     },
 
     toggleBlock(editor: Editor, block: Element["type"]) {
@@ -93,15 +93,7 @@ const TextEditor = () => {
   }, []);
 
   const renderLeaf = useCallback((props: RenderLeafProps) => {
-    const control = controls.find(
-      (c) => c.name === Object.keys(props.leaf).find((key) => key === c.name)
-    );
-
-    const element = control?.apply(props);
-    if (element) return element;
-
-    // default leaf renderer - must return a React element
-    return <span {...props.attributes}>{props.children}</span>;
+    return <Leaf {...props} />;
   }, []);
 
   const renderElement = useCallback((props: RenderElementProps) => {

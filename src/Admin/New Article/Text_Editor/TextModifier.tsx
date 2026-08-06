@@ -1,7 +1,7 @@
 import type { JSX, ReactElement, ReactNode } from "react";
 import type { RenderLeafProps } from "slate-react";
-import Bold from "./Renderer/Bold";
-import Italic from "./Renderer/Italic";
+import Bold from "./Renderer - Leaf/Bold";
+import Italic from "./Renderer - Leaf/Italic";
 
 export interface IModifier {
     name: string;
