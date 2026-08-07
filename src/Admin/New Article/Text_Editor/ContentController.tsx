@@ -20,7 +20,7 @@ const ContentController = (props: { CustomEditor: ICustomEditor }) => {
         return (
           <button
             key={index}
-            className={`cursor-pointer w-full px-3 py-2 ring-1 ring-text rounded hover:bg-text/90 flex items-center justify-center fill-text hover:fill-white`}
+            className={`cursor-pointer w-full px-3 py-2 ring-1 ring-text rounded hover:bg-text/90 flex items-center justify-center ${props.CustomEditor.isMarkActive(editor , control.name)? "fill-white bg-text/90" : "fill-text" } hover:fill-white `}
             title={control.name}
             onMouseDown={(e) => {
               e.preventDefault();
