@@ -14,11 +14,10 @@ import {
   type ReactEditor,
   type RenderLeafProps,
 } from "slate-react";
-import CodeElement from "./CodeElement";
-import DefaultElement from "./DefaultElement";
-import Bold from "./Renderer/Bold";
+import CodeElement from "./Renderer - Element/CodeElement";
+import DefaultElement from "./Renderer - Element/DefaultElement";
 import ContentController from "./ContentController";
-import controls from "./TextModifier";
+import Leaf from "./Renderer - Leaf/Leaf";
 
 type CustomElement = { type: string; children: CustomText[] };
 
@@ -26,6 +25,13 @@ type CustomText = {
   text: string;
   [key: string]: any;
 };
+
+ interface ICustomEditor {
+    isMarkActive: (editor: Editor, mark: string) => boolean;
+    isBlockActive: (editor: Editor, block: Element["type"]) => boolean;
+    toggleMark: (editor: Editor, mark: string) => void;
+    toggleBlock: (editor: Editor, block: Element["type"]) => void;
+  }
 
 declare module "slate" {
   interface CustomTypes {
@@ -37,13 +43,6 @@ declare module "slate" {
 
 const TextEditor = () => {
   const [editor] = useState(() => withReact(createEditor()));
-
-  interface ICustomEditor {
-    isMarkActive: (editor: Editor, mark: string) => boolean;
-    isBlockActive: (editor: Editor, block: Element["type"]) => boolean;
-    toggleMark: (editor: Editor, mark: string) => void;
-    toggleBlock: (editor: Editor, block: Element["type"]) => void;
-  }
 
   const CustomEditor: ICustomEditor = {
     isMarkActive(editor: Editor, mark: string) {
@@ -93,15 +92,7 @@ const TextEditor = () => {
   }, []);
 
   const renderLeaf = useCallback((props: RenderLeafProps) => {
-    const control = controls.find(
-      (c) => c.name === Object.keys(props.leaf).find((key) => key === c.name)
-    );
-
-    const element = control?.apply(props);
-    if (element) return element;
-
-    // default leaf renderer - must return a React element
-    return <span {...props.attributes}>{props.children}</span>;
+    return <Leaf {...props} />;
   }, []);
 
   const renderElement = useCallback((props: RenderElementProps) => {
@@ -117,9 +108,9 @@ const TextEditor = () => {
       editor={editor}
       initialValue={[{ type: "paragraph", children: [{ text: "" }] }]}
     >
-      <ContentController editor={editor} CustomEditor={CustomEditor} />
+      <ContentController CustomEditor={CustomEditor} />
       <Editable
-        className="text-[15px] w-full min-h-100 ring-1 p-4 max-h-[80dvh]"
+        className="text-[15px] w-full min-h-[50dvh] ring-1 p-4 max-h-[80dvh]"
         onKeyDown={handleKeydown}
         renderElement={renderElement}
         renderLeaf={renderLeaf}
