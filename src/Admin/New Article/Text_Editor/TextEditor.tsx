@@ -15,7 +15,7 @@ import {
   type RenderLeafProps,
 } from "slate-react";
 import CodeElement from "./Renderer - Element/CodeElement";
-import DefaultElement from "./DefaultElement";
+import DefaultElement from "./Renderer - Element/DefaultElement";
 import ContentController from "./ContentController";
 import Leaf from "./Renderer - Leaf/Leaf";
 
@@ -25,6 +25,13 @@ type CustomText = {
   text: string;
   [key: string]: any;
 };
+
+ interface ICustomEditor {
+    isMarkActive: (editor: Editor, mark: string) => boolean;
+    isBlockActive: (editor: Editor, block: Element["type"]) => boolean;
+    toggleMark: (editor: Editor, mark: string) => void;
+    toggleBlock: (editor: Editor, block: Element["type"]) => void;
+  }
 
 declare module "slate" {
   interface CustomTypes {
@@ -36,13 +43,6 @@ declare module "slate" {
 
 const TextEditor = () => {
   const [editor] = useState(() => withReact(createEditor()));
-
-  interface ICustomEditor {
-    isMarkActive: (editor: Editor, mark: string) => boolean;
-    isBlockActive: (editor: Editor, block: Element["type"]) => boolean;
-    toggleMark: (editor: Editor, mark: string) => void;
-    toggleBlock: (editor: Editor, block: Element["type"]) => void;
-  }
 
   const CustomEditor: ICustomEditor = {
     isMarkActive(editor: Editor, mark: string) {
@@ -64,7 +64,6 @@ const TextEditor = () => {
       } else {
         editor.addMark(mark, true);
       }
-      console.log(Editor.marks(editor));
     },
 
     toggleBlock(editor: Editor, block: Element["type"]) {
@@ -109,9 +108,9 @@ const TextEditor = () => {
       editor={editor}
       initialValue={[{ type: "paragraph", children: [{ text: "" }] }]}
     >
-      <ContentController editor={editor} CustomEditor={CustomEditor} />
+      <ContentController CustomEditor={CustomEditor} />
       <Editable
-        className="text-[15px] w-full min-h-100 ring-1 p-4 max-h-[80dvh]"
+        className="text-[15px] w-full min-h-[50dvh] ring-1 p-4 max-h-[80dvh]"
         onKeyDown={handleKeydown}
         renderElement={renderElement}
         renderLeaf={renderLeaf}
