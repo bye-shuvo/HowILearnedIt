@@ -18,6 +18,7 @@ import CodeElement from "./Renderer - Element/CodeElement";
 import DefaultElement from "./Renderer - Element/DefaultElement";
 import ContentController from "./ContentController";
 import Leaf from "./Renderer - Leaf/Leaf";
+import QuoteElement from "./Renderer - Element/QuoteElement";
 
 type CustomElement = { type: string; children: CustomText[] };
 
@@ -89,6 +90,10 @@ const TextEditor = () => {
       e.preventDefault();
       CustomEditor.toggleMark(editor, "bold");
     }
+    else if(e.ctrlKey && e.key === "q"){
+      e.preventDefault();
+      CustomEditor.toggleBlock(editor, "quote");
+    }
   }, []);
 
   const renderLeaf = useCallback((props: RenderLeafProps) => {
@@ -98,7 +103,11 @@ const TextEditor = () => {
   const renderElement = useCallback((props: RenderElementProps) => {
     if (props.element.type === "code") {
       return <CodeElement {...props} />;
-    } else {
+    }
+    else if(props.element.type === "quote"){
+      return <QuoteElement {...props} />
+    }
+     else {
       return <DefaultElement {...props} />;
     }
   }, []);
@@ -110,7 +119,7 @@ const TextEditor = () => {
     >
       <ContentController CustomEditor={CustomEditor} />
       <Editable
-        className="text-[15px] w-full min-h-[50dvh] ring-1 p-4 max-h-[80dvh]"
+        className="text-[15px] w-full min-h-[50dvh] ring-1 p-4 max-h-[80dvh] overflow-y-scroll scrollbar-none"
         onKeyDown={handleKeydown}
         renderElement={renderElement}
         renderLeaf={renderLeaf}
